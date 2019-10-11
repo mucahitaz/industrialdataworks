@@ -12,31 +12,52 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 from sklearn.datasets import load_iris
+from sklearn import preprocessing
 import numpy as np
+
+#https://sebastianraschka.com/Articles/2015_pca_in_3_steps.html
 
 pd.set_option('display.max_rows', 50)
 pd.set_option('display.max_columns', 20)
 pd.set_option('display.width', 2000)
 
 
+df = pd.read_csv(
+    filepath_or_buffer='https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data',
+    header=None,
+    sep=',')
 
-dataset = load_iris(return_X_y=False)
+df.columns=['sepal_len', 'sepal_wid', 'petal_len', 'petal_wid', 'class']
+df.dropna(how="all", inplace=True) # drops the empty line at file-end
 
-iris=load_iris()
-x = iris.data
-y= iris.target
+print(df.tail())
 
-# # print(dataset.DESCR)
-# # print(dataset)
-#
-# df = pd.DataFrame(dataset.data, columns=dataset.feature_names)
-# dataset.feature_names
-#
-# df['target_names'] = np.take(dataset.target_names, dataset.target)
-#
-# # print(df.head(50))
-# # print(df)
-# # print(dataset.groupby('class').size())
-#
-# print(pd.DataFrame(dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)))
-# print(plt.show())
+X = df.iloc[:,0:4].values
+y = df.iloc[:,4].values
+
+# print(X)
+# print(y)
+
+label_dict = {1: 'Iris-Setosa',
+              2: 'Iris-Versicolor',
+              3: 'Iris-Virgnica'}
+
+feature_dict = {0: 'sepal length [cm]',
+                1: 'sepal width [cm]',
+                2: 'petal length [cm]',
+                3: 'petal width [cm]'}
+
+with plt.style.context('seaborn-whitegrid'):
+    plt.figure(figsize=(8, 6))
+    for cnt in range(4):
+        plt.subplot(2, 2, cnt+1)
+        for lab in ('Iris-setosa', 'Iris-versicolor', 'Iris-virginica'):
+            plt.hist(X[y==lab, cnt],
+                     label=lab,
+                     bins=10,
+                     alpha=0.3,)
+        plt.xlabel(feature_dict[cnt])
+    plt.legend(loc='upper right', fancybox=True, fontsize=8)
+
+    plt.tight_layout()
+    plt.show()
