@@ -11,7 +11,6 @@ df = pd.read_csv (r'/home/administrator/PycharmProjects/Uni/data/Video_Games_Sal
 def StarterFunc():
     print(df.head())  #İlk 5 satır görüntülenir.
 
-
 '''Eksik değer içeren kayıtların silinmesi yöntemi'''
 
 def DropMissingValues():
@@ -24,10 +23,12 @@ def DropMissingValues():
 '''Eksik değer içeren verilerin medyan yardımı ile doldurulması'''
 
 def MedianFillingFunc(self):
+    df[self] = pd.to_numeric(df[self], errors='coerce') #str verilerini NaN Formatına dönüştürür.
     median = df[self].median()
     df[self].fillna(median, inplace=True)
     print("Median of {} column is".format(self) , median)
     return df
 
-print(DropMissingValues())
-print(MedianFillingFunc())  #tbd value problem çıkarıyor.
+# print(DropMissingValues())
+print(MedianFillingFunc("User_Count"))  #tbd value problem çıkarıyor.
+print(df)
