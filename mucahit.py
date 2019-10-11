@@ -1,4 +1,9 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+from pandas import DataFrame
+
+plt.close('all')
+
 
 pd.set_option('display.max_rows', 50)
 pd.set_option('display.max_columns', 25)
@@ -29,6 +34,19 @@ def MedianFillingFunc(self):
     print("Median of {} column is".format(self) , median)
     return df
 
-# print(DropMissingValues())
-print(MedianFillingFunc("User_Count"))  #tbd value problem çıkarıyor.
+def ModeFillingFunc(self):
+    mode = df[self].mode()
+    df[self].fillna(mode, inplace= True)
+    print("Mode of {} column is".format(self) , mode)
+    return df
+
+DropMissingValues()
+# sf = DataFrame(df,columns=['User_Count','User_Score'])
+# print(sf)
 print(df)
+# print(df.plot(x='User_Count' , y= 'Critic_Score', kind = 'line'))
+
+# print(DropMissingValues())
+# print(MedianFillingFunc("User_Count"))  #tbd value problem çıkarıyor.
+# print(ModeFillingFunc("Critic_Score"))
+# print(df)
