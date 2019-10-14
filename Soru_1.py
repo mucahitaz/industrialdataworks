@@ -83,7 +83,7 @@ for color, i, target_name in zip(colors, [0, 1, 2], target_names):
                 label=target_name)
 plt.legend(loc='best', shadow=False, scatterpoints=1)
 plt.title('PCA of IRIS dataset')
-
+plt.show()
 
 # In[ ]:
 
