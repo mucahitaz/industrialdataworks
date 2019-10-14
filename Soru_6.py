@@ -13,12 +13,14 @@ plt.ylabel('Sepal Width', fontsize=18)
 
 km = KMeans(n_clusters = 3, n_jobs = 4, random_state=42)
 km.fit(X)
+print(y)
 
 centers = km.cluster_centers_
 print(centers)
 
 
 new_labels = km.labels_
+print(new_labels)
 
 fig, axes = plt.subplots(1, 2, figsize=(16,8))
 
@@ -33,3 +35,4 @@ axes[1].tick_params(direction='in', length=10, width=5, colors='k', labelsize=20
 axes[0].set_title('Actual', fontsize=18)
 axes[1].set_title('Predicted', fontsize=18)
 plt.show()
+
