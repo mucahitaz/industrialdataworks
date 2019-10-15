@@ -1,10 +1,7 @@
 import numpy as np
 from sklearn import datasets
-from sklearn.gaussian_process.kernels import RBF
 from sklearn import preprocessing
 from sklearn.metrics import pairwise as pw
-from scipy.spatial.distance import pdist, squareform
-import scipy
 
 # import some data to play with
 iris = datasets.load_iris()

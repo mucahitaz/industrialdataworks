@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from pandas import DataFrame
+from sklearn import preprocessing
 
 plt.close('all')
 
@@ -9,7 +10,7 @@ pd.set_option('display.max_rows', 50)
 pd.set_option('display.max_columns', 25)
 pd.set_option('display.width', 1000)
 
-df = pd.read_csv (r'/home/administrator/PycharmProjects/Uni/data/Video_Games_Sales_as_at_22_Dec_2016.csv', encoding = "ISO-8859-1")
+df = pd.read_csv (r'/home/administrator/PycharmProjects/Uni/weekly_reports/data/Video_Games_Sales_as_at_22_Dec_2016.csv', encoding = "ISO-8859-1")
 
 '''Başlangıçta veri setini incelemek ve fikir edinmek için kullanılabilecek komutlar'''
 
@@ -40,13 +41,14 @@ def ModeFillingFunc(self):
     print("Mode of {} column is".format(self) , mode)
     return df
 
-DropMissingValues()
-# sf = DataFrame(df,columns=['User_Count','User_Score'])
-# print(sf)
-print(df)
-# print(df.plot(x='User_Count' , y= 'Critic_Score', kind = 'line'))
+# def Normalizasion(self):
+#     X = self.[:,2:3]
+#     normalized_data = preprocessing.normalize(X)
+#     print(normalized_data)
+#     return normalized_data
 
-# print(DropMissingValues())
-# print(MedianFillingFunc("User_Count"))  #tbd value problem çıkarıyor.
-# print(ModeFillingFunc("Critic_Score"))
-# print(df)
+df_norm = (df - df.mean()) / (df.max() - df.min())
+print(df_norm)
+
+DropMissingValues()
+# Normalizasion(df)

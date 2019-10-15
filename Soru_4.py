@@ -1,8 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
-
 from sklearn.decomposition import PCA, KernelPCA
-from sklearn.datasets import make_circles
 from sklearn import datasets
 
 
