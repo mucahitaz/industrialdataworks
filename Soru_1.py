@@ -12,7 +12,6 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn import preprocessing
 import numpy as np
 
-
 # In[21]:
 
 
@@ -23,12 +22,10 @@ y = iris.target
 target_names = iris.target_names
 print(target_names)
 
-
 # In[ ]:
 
 
 print(X)
-
 
 # In[ ]:
 
@@ -36,14 +33,12 @@ print(X)
 normalized_data = preprocessing.normalize(X)
 print(normalized_data)
 
-
 # In[26]:
 
 
 mean_vec = np.mean(normalized_data, axis=0)
-cov_mat = (normalized_data - mean_vec).T.dot((normalized_data - mean_vec)) / (normalized_data.shape[0]-1)
-print('Covariance matrix \n%s' %cov_mat)
-
+cov_mat = (normalized_data - mean_vec).T.dot((normalized_data - mean_vec)) / (normalized_data.shape[0] - 1)
+print('Covariance matrix \n%s' % cov_mat)
 
 # In[27]:
 
@@ -52,9 +47,8 @@ cov_mat = np.cov(normalized_data.T)
 
 eig_vals, eig_vecs = np.linalg.eig(cov_mat)
 
-print('Eigenvectors \n%s' %eig_vecs)
-print('\nEigenvalues \n%s' %eig_vals)
-
+print('Eigenvectors \n%s' % eig_vecs)
+print('\nEigenvalues \n%s' % eig_vals)
 
 # In[28]:
 
@@ -62,7 +56,6 @@ print('\nEigenvalues \n%s' %eig_vals)
 pca = PCA(n_components=2)
 normalized_data_r = pca.fit(normalized_data).transform(normalized_data)
 print(normalized_data_r)
-
 
 # In[19]:
 
@@ -73,7 +66,6 @@ print('explained variance ratio (first two components): %s'
 plt.figure()
 colors = ['navy', 'turquoise', 'darkorange']
 lw = 2
-
 
 # In[20]:
 
@@ -86,7 +78,3 @@ plt.title('PCA of IRIS dataset')
 plt.show()
 
 # In[ ]:
-
-
-
-

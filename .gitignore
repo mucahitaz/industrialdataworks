@@ -1,2 +1,6 @@
 venv/
 __pycache__/
+data/titanic
+data/climbing_statistics.csv
+data/Rainier_Weather.csv
+data/Video_Games_Sales_as_at_22_Dec_2016.csv
