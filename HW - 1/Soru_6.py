@@ -6,10 +6,11 @@ iris = datasets.load_iris()
 X = iris.data[:,:2]
 y = iris.target
 target_names = iris.target_names
+print(target_names)
 
-# plt.scatter(X[:,0], X[:,1], c=y, cmap='gist_rainbow')
-# plt.xlabel('Spea1 Length', fontsize=18)
-# plt.ylabel('Sepal Width', fontsize=18)
+plt.scatter(X[:,0], X[:,1], c=y, cmap='gist_rainbow')
+plt.xlabel('Spea1 Length', fontsize=18)
+plt.ylabel('Sepal Width', fontsize=18)
 
 km = KMeans(n_clusters = 3, n_jobs = 4, random_state=42)
 km.fit(X)
