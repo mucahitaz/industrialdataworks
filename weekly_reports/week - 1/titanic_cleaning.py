@@ -124,7 +124,7 @@ print(data_val.isnull().sum())
 y = data_raw.Survived.values
 print(y)
 
-total = [data_raw, data_val,data1]
+total = [data_raw, data_val, data1]
 for dataset in total:
     dataset.loc[dataset['Age'] <= 18, 'Age'] = 0
     dataset.loc[(dataset['Age'] > 18) & (dataset['Age'] <= 32), 'Age'] = 1
@@ -135,5 +135,5 @@ for dataset in total:
 print(data1)
 print(data1.head())
 
-titanic=pd.get_dummies(titanic,columns=['Sex','Embarked'],drop_first=True)
-titanic_test=pd.get_dummies(titanic_test,columns=['Sex','Embarked'],drop_first=True)
+titanic = pd.get_dummies(titanic, columns=['Sex', 'Embarked'], drop_first=True)
+titanic_test = pd.get_dummies(titanic_test, columns=['Sex', 'Embarked'], drop_first=True)
